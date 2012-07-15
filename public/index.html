@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<title>Jmacs Editor</title>
+
+		<meta name="author" content="brandon wilhite" />
+
+		<link rel="stylesheet" type="text/css" href="/css/1088_16_5_5.css" />
+		<link rel="stylesheet" type="text/css" href="/css/codemirror.css" />
+		<link rel="stylesheet" type="text/css" href="/css/themes/cobalt.css" />
+		<link rel="stylesheet" type="text/css" href="/css/themes/cobalt-minibuffer.css" />
+		<link rel="stylesheet" type="text/css" href="/css/jmacs.css" />
+
+		<style type="text/css">
+			body {
+				background: #efefef;
+			}
+			#container {
+				width: 900px;
+				margin: 100px auto 0 auto;
+			}
+			.item {
+				margin: 30px 0;
+			}
+			.toggle {
+				position: relative;
+				margin:0;
+				display: none;
+			}
+			.toggle p {
+				font-size: 13px;
+				margin:15px 0 0 0;
+				line-height: 20px;
+			}
+			h3.toggleOpen {
+				margin:0;
+				cursor: pointer;
+			}
+			.toggleClose {
+				position: absolute;
+				display: block;
+				background: #666;
+				padding: 5px;
+				border-radius: 200px;
+				-moz-border-radius: 200px;
+				-webkit-border-radius: 200px;
+				-o-border-radius: 50px;
+				color: #aaa;
+				font-size: 13px;
+				top: -30px;
+				right: 5px;
+				cursor: pointer;
+			}
+			.toggleClose:hover {
+				background: #444;
+				color: #ccc;
+			}
+		</style>
+
+		<style type="text/css">
+			td, th{
+				border: thin solid black;
+			}
+			.CodeMirror-gutter {min-width: 2.6em; cursor:pointer;}
+			.activeline {background: #e8f2ff !important;}
+		</style>
+
+	</head>
+
+	<body>
+
+	 	<div id="designer_container" class="container_16">
+
+	  		<textarea id="editor" class="alpha omega grid_16" style="border: thin solid black; height:600px;"></textarea>
+			<div id="modeline" class="alpha omega grid_16">--:**-</div><br />
+			<textarea id="minibuffer" class="alpha omega grid_16 Jmacs-Minibuffer" style="border: thin solid black; height:20px;"></textarea>
+
+			<footer class="alpha omega grid_16">
+		  		<p>&copy; Copyright 2012 by brandon wilhite</p>
+			</footer>
+
+	  	</div>	
+			
+		<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+
+		<script type="text/javascript" src="/js/codemirror/codemirror.js"></script>
+		<script type="text/javascript" src="/js/codemirror/javascript.js"></script>
+		<script type="text/javascript" src="/js/codemirror/foldcode.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.Namespace.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.NotifyLogger.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.SimpleEditor.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.Editor.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.Minibuffer.js"></script>
+		<script type="text/javascript" src="/js/Jmacs.FileServices.js"></script>
+
+		<script type="text/javascript">
+			$(function(){
+
+				var FileService = window.Jmacs.FileService;
+
+				var Editor = new window.Jmacs.Jmacs(
+					{
+						Editor:'editor',
+						Modeline:'modeline',
+						Minibuffer:'minibuffer'
+					},
+					{
+						Theme:'cobalt',
+						Services: {
+							findFile: FileService.findFile,
+							saveFile: FileService.saveFile
+						}
+					}
+				);
+
+				Editor.open("//foo");
+			});
+		</script>
+	</body>
+</html>

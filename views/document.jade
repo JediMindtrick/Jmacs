@@ -1,0 +1,27 @@
+//see http://alexgorbatchev.com/SyntaxHighlighter/manual/installation.html
+//dependency http://xregexp.com/
+//also see http://hackingon.net/post/Syntax-Highlighting-for-Gherkin-(Cucumber-Language).aspx
+//these provide gherkin syntax highlighting
+link(rel='stylesheet', href='/documentation/css/markdown.css')
+link(rel='stylesheet', href='/documentation/css/shCore.css')
+link(rel='stylesheet', href='/documentation/css/shThemeDefault.css')
+link(rel='stylesheet', href='/documentation/css/shThemeGherkin.css')
+style .syntaxhighlighter { overflow-y: hidden !important; }
+
+
+script(type='text/javascript', src='/documentation/js/xregexp-min.js')
+script(type='text/javascript', src='/documentation/js/shCore.js')
+script(type='text/javascript', src='/documentation/js/shBrushJScript.js')
+script(type='text/javascript', src='/documentation/js/shBrushGherkin.js')
+script(type='text/javascript')
+	SyntaxHighlighter.all()
+
+
+div.entry !{content}
+
+div.nav
+	ul
+		li
+			a(href='/Documentation') back
+		li
+			a(href="/") Home

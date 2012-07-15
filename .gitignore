@@ -1,0 +1,6 @@
+node_modules
+*~
+*#
+dia_files
+*.dia
+private_notes
